@@ -1,4 +1,4 @@
-Battle = State()
+Battle = State("Battle")
 
 function Battle:init()
   deck_left = {
@@ -10,7 +10,7 @@ function Battle:init()
   deck_right = {
     Game.unit_info.mage;
     Game.unit_info.mage;
-    Game.unit_info.mage
+    Game.unit_info.priest;
   }
   
   -- place left
@@ -27,17 +27,25 @@ function Battle:init()
   for i, info in pairs(deck_right) do
     unit = Unit(Battle, info)
     unit.center = {x, y}
-    unit.visible = true
+    --unit.visible = true
     x = x + GAPS + UNIT_WIDTH
   end
   
 end
 
 
-function Battle:paint()
-  --print("painted")
-  --love.graphics.setColor(1, 1, 1, 1)
-  --love.graphics.print({{1, 1, 0, 1}, "TEXT"}, 10, 10)
+function Battle:draw()
+  Battle:draw_elements()
+end
+
+function Battle:enter(prev)
+  print("Battle enter. Prev: ", prev)
+end
+
+function Battle:keypressed(key, code)
+  if key == "escape" then
+    Gamestate.switch(Game.states.menu)
+  end
 end
 
 return Battle

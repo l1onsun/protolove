@@ -1,5 +1,8 @@
 UNIT_HEIGHT = 240
 UNIT_WIDTH = 150
+
+SPELL_SIZE = 60
+
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1200
 GAPS = 15
@@ -12,6 +15,7 @@ Gamestate = require "hump.gamestate"
 State = require "classes.state" 
 Element = require "classes.element"
 Unit = require "classes.unit"
+Ability = require "classes.ability"
 
 
 Game = {

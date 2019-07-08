@@ -1,4 +1,4 @@
-return Class{
+return Class{ -- Element
   init = function(self, state, center , box)
     self.state = state
     self.center = center or {0, 0}
@@ -35,6 +35,9 @@ return Class{
   end;
   
   draw = function(self)
+    if not self:is_visible() then
+      return
+    end
     if self:_active() then
       self:active_draw()
     else
@@ -50,6 +53,10 @@ return Class{
   inactive_draw = function(self)
     love.graphics.setColor(0.5, 0.5, 0.5, 1)
     love.graphics.rectangle("fill", self.border:left(), self.border:top(), self.width, self.height)
+  end;
+  
+  is_visible = function(self)
+    return true
   end;
   
   click = function(self)
